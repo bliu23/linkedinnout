@@ -8,6 +8,7 @@ var app = express();
 
 const timeout = ms => new Promise(res => setTimeout(res, ms))
 
+// linked in has a stupid auth wall so this prototype and everything else is d-e-d
 app.get('/scrape', function(req, res) {
     var chrome;
     var client;
@@ -67,22 +68,6 @@ app.get('/scrape', function(req, res) {
         console.log(ret);
         chrome.kill();
     })
-    
-    // (async() => {
-    //     const browser = await puppeteer.launch();
-    //     const page = await browser.newPage();
-    //     await page.goto('https://www.linkedin.com/in/brandon-liu-29112bb0/');
-    //     await timeout(3000)
-    //     await page.goto('https://www.linkedin.com/in/brandon-liu-29112bb0/');
-    //     await timeout(3000)
-    //     const result = await page.evaluate(() => {
-    //         return document
-    //     }).then(function(res) {
-    //         console.log(res);
-    //     });
-    //     await page.screenshot({path: 'example.png'});
-    //     browser.close();
-    // })();
     res.send('Hello world');
 });
 
